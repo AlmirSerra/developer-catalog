@@ -14,7 +14,7 @@ npm
 Faça o clone do repositório: 
 
 ```
-git clone https://github.com/seu-usuario/developer-catalog.git
+git clone https://github.com/AlmirSerra/developer-catalog.git
 ```
 
 Entre na pasta do projeto: 
