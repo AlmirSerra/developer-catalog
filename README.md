@@ -47,7 +47,10 @@ Rode as migrações do banco de dados:
 php artisan migrate
 ```
 
-Rode o servidor: ```php artisan serve```
+Rode o servidor: 
+```
+php artisan serve
+```
 
 Abra o navegador em 
 ```
