@@ -24,19 +24,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         email: "",
         birthdate: "",
         level_id: ""
-      }
+      },
+      levels: [] // adicionei essa propriedade para preencher o select de níveis
     };
   },
+  created: function created() {
+    var _this = this;
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return _this.loadLevels();
+          case 2:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }))();
+  },
   methods: {
-    crear: function crear() {
-      var _this = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
+    loadLevels: function loadLevels() {
+      var _this2 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              _context.next = 2;
-              return _this.axios.post('/api/developer', _this.blog).then(function (response) {
-                _this.$router.push({
+              _context2.next = 2;
+              return _this2.axios.get("/api/level").then(function (response) {
+                _this2.levels = response.data;
+              })["catch"](function (error) {
+                console.log(error);
+              });
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2);
+      }))();
+    },
+    create: function create() {
+      var _this3 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return _this3.axios.post("/api/developer", _this3.developer).then(function (response) {
+                _this3.$router.push({
                   name: "showDeveloper"
                 });
               })["catch"](function (error) {
@@ -44,9 +79,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               });
             case 2:
             case "end":
-              return _context.stop();
+              return _context3.stop();
           }
-        }, _callee);
+        }, _callee3);
       }))();
     }
   }
@@ -89,65 +124,118 @@ var render = function render() {
     staticClass: "col-12 mb-2"
   }, [_c("div", {
     staticClass: "form-group"
-  }, [_c("label", [_vm._v("Título")]), _vm._v(" "), _c("input", {
+  }, [_c("label", [_vm._v("Nome")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.blog.titulo,
-      expression: "blog.titulo"
+      value: _vm.developer.name,
+      expression: "developer.name"
     }],
     staticClass: "form-control",
     attrs: {
       type: "text"
     },
     domProps: {
-      value: _vm.blog.titulo
+      value: _vm.developer.name
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.blog, "titulo", $event.target.value);
+        _vm.$set(_vm.developer, "name", $event.target.value);
       }
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "col-12 mb-2"
   }, [_c("div", {
-    staticClass: "form-floating"
-  }, [_c("textarea", {
+    staticClass: "form-group"
+  }, [_c("label", [_vm._v("Email")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.blog.contenido,
-      expression: "blog.contenido"
+      value: _vm.developer.email,
+      expression: "developer.email"
     }],
     staticClass: "form-control",
-    staticStyle: {
-      height: "100px"
-    },
     attrs: {
-      id: "floatingTextarea2"
+      type: "email"
     },
     domProps: {
-      value: _vm.blog.contenido
+      value: _vm.developer.email
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.blog, "contenido", $event.target.value);
+        _vm.$set(_vm.developer, "email", $event.target.value);
       }
     }
-  }), _vm._v(" "), _c("label", {
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 mb-2"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", [_vm._v("Data de Nascimento")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.developer.birthdate,
+      expression: "developer.birthdate"
+    }],
+    staticClass: "form-control",
     attrs: {
-      "for": "floatingTextarea2"
+      type: "date"
+    },
+    domProps: {
+      value: _vm.developer.birthdate
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.developer, "birthdate", $event.target.value);
+      }
     }
-  }, [_vm._v("Contenido")])])]), _vm._v(" "), _vm._m(1)])])])])])]);
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 mb-2"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", [_vm._v("Nível")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.developer.level_id,
+      expression: "developer.level_id"
+    }],
+    staticClass: "form-control",
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.developer, "level_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "",
+      disabled: "",
+      selected: ""
+    }
+  }, [_vm._v("Selecione o nível")]), _vm._v(" "), _vm._l(_vm.levels, function (level) {
+    return _c("option", {
+      key: level._id,
+      domProps: {
+        value: level._id
+      }
+    }, [_vm._v(_vm._s(level.name))]);
+  })], 2)])]), _vm._v(" "), _vm._m(1)])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "card-header"
-  }, [_c("h4", [_vm._v("Crear Blog")])]);
+  }, [_c("h4", [_vm._v("Criar Developer")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -158,7 +246,7 @@ var staticRenderFns = [function () {
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Guardar")])]);
+  }, [_vm._v("Salvar")])]);
 }];
 render._withStripped = true;
 
