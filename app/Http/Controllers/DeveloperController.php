@@ -2,56 +2,74 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\DeveloperRequest;
-use App\Services\DeveloperService;
+use App\Models\Developer;
+use Illuminate\Http\Request;
 
 class DeveloperController extends Controller
 {
-    private $service;
-
-    public function __construct(DeveloperService $service)
-    {
-        $this->service = $service;
-    }
-
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $developers = $this->service->getAll();
-        return view('developer.index', compact('developers'));
+        $developers = Developer::all();
+        return respons()->json($developers);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        return view('developer.create');
+        //
     }
 
-    public function store(DeveloperRequest $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        $developer = $this->service->create($request->validated());
-        return redirect()->route('developers.index')->with('success', 'Developer created successfully.');
+        $developer = Developer::create($request->post());
+        return respons()->json([
+            'developer'=>$developer
+        ]);
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(Developer $developer)
     {
-        $developer = $this->service->getById($id);
-        return view('developer.edit', compact('developer'));
+        return response()->json($developer);
     }
 
-    public function update(DeveloperRequest $request, $id)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
-        $this->service->update($id, $request->validated());
-        return redirect()->route('developers.index')->with('success', 'Developer updated successfully.');
+        //
     }
 
-    public function delete($id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Developer $developer)
     {
-        $developer = $this->service->getById($id);
-        return view('developer.delete', compact('developer'));
+        $developer->fill($request->post())->save();
+        return response()->json([
+            'developer'=>$developer
+        ]);
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Developer $developer)
     {
-        $this->service->delete($id);
-        return redirect()->route('developers.index')->with('success', 'Developer deleted successfully.');
+        $developer->delete();
+        return response()->json([
+            'message'=> 'Desenvolvedor Removido'
+        ]);
     }
 }

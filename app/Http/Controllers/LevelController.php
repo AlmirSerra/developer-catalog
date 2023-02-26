@@ -2,56 +2,63 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LevelRequest;
-use App\Services\LevelService;
+use Illuminate\Http\Request;
 
 class LevelController extends Controller
 {
-    private $service;
-
-    public function __construct(LevelService $service)
-    {
-        $this->service = $service;
-    }
-
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $levels = $this->service->getAll();
-        return view('level.index', compact('levels'));
+        //
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        return view('level.create');
+        //
     }
 
-    public function store(LevelRequest $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        $level = $this->service->create($request->validated());
-        return redirect()->route('levels.index')->with('success', 'Level created successfully.');
+        //
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        $level = $this->service->getById($id);
-        return view('level.edit', compact('level'));
+        //
     }
 
-    public function update(LevelRequest $request, $id)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
-        $this->service->update($id, $request->validated());
-        return redirect()->route('levels.index')->with('success', 'Level updated successfully.');
+        //
     }
 
-    public function delete($id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
-        $level = $this->service->getById($id);
-        return view('level.delete', compact('level'));
+        //
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
-        $this->service->delete($id);
-        return redirect()->route('levels.index')->with('success', 'Level deleted successfully.');
+        //
     }
 }
