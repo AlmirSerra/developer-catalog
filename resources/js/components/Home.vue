@@ -4,7 +4,7 @@
         <div class="col-md-6 offset-md-3 text-center">
           <h1 class="main-title">Bem-vindo ao Developer Catalog!</h1>
           <p>Um sistema para gerenciar informações de desenvolvedores.</p>
-          <router-link to="/developer/create" class="btn btn-lg btn-primary">
+          <router-link to="/developers/create" class="btn btn-lg btn-primary">
             Criar novo registro
           </router-link>
           <router-link to="/developers" class="btn btn-lg btn-secondary">

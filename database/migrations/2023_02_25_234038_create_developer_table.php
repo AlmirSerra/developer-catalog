@@ -16,13 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('level_id');
             $table->string('email')->unique();
-            $table->string('phone');
             $table->timestamps();
             
-            $table->foreign('level_id')
-                  ->references('id')
-                  ->on('levels')
-                  ->onDelete('cascade');
+            
         });
     }
 

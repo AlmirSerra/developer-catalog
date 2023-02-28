@@ -26,7 +26,7 @@ var render = function render() {
   }, [_vm._v("Bem-vindo ao Developer Catalog!")]), _vm._v(" "), _c("p", [_vm._v("Um sistema para gerenciar informações de desenvolvedores.")]), _vm._v(" "), _c("router-link", {
     staticClass: "btn btn-lg btn-primary",
     attrs: {
-      to: "/developer/create"
+      to: "/developers/create"
     }
   }, [_vm._v("\n        Criar novo registro\n      ")]), _vm._v(" "), _c("router-link", {
     staticClass: "btn btn-lg btn-secondary",

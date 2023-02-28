@@ -19,9 +19,7 @@
                         <tr v-for="developer in developers" :key="developer.id">
                         <td>{{ developer.id }}</td>
                         <td>{{ developer.name }}</td>
-                        <td>{{ developer.email }}</td>
-                        <td>{{ developer.birthdate }}</td>
-                        <td>{{ developer.level_id }}</td>
+
                         <td>
                             <router-link :to='{name:"editDevelopers", params:{id:developer.id}}' class="btn btn-info"><i class="fa-light fa-pen-to-square"></i></router-link>
                             <a type="button" @click="deleteDeveloper(developer.id)" class="btn btn-danger"><i class="fa-light fa-trash"></i></a>
@@ -37,23 +35,23 @@
 <script>
 
 export default {
-    name:"developers",
+    name:"developer",
     data(){
         return {
-            developers: []
+            developer: []
         }
     },
     mounted(){
-        this.showDevelopers
+        this.showDevelopers()
     },
     methods: {
         async showDevelopers(){
             await this.axios.get('/api/developer')
                 .then(response=>{
-                    this.developers = response.data
+                    this.developer = response.data
                 })
                 .catch(error=>{
-                    this.blog = []
+                    this.developer = []
                 })
         },
         deleteDeveloper(id){

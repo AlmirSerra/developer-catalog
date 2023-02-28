@@ -12,8 +12,8 @@ class DeveloperController extends Controller
      */
     public function index()
     {
-        $developers = Developer::all();
-        return respons()->json($developers);
+        $developers = Developer::all(['id', 'name', 'email']);
+        return response()->json($developers);
     }
 
     /**
@@ -30,7 +30,7 @@ class DeveloperController extends Controller
     public function store(Request $request)
     {
         $developer = Developer::create($request->post());
-        return respons()->json([
+        return response()->json([
             'developer'=>$developer
         ]);
     }

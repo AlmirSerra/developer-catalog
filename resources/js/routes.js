@@ -17,7 +17,7 @@ export const routes = [
     },
     {
         name: 'createDevelopers',
-        path: '/developer/create',
+        path: '/developers/create',
         component: Create
     },
     {

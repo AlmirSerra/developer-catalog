@@ -2293,7 +2293,7 @@ var routes = [{
   component: Show
 }, {
   name: 'createDevelopers',
-  path: '/developer/create',
+  path: '/developers/create',
   component: Create
 }, {
   name: 'editDevelopers',

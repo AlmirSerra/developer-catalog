@@ -16,72 +16,44 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "create-developer",
+  name: "Create",
   data: function data() {
     return {
       developer: {
         name: "",
         email: "",
         birthdate: "",
-        level_id: ""
-      },
-      levels: [] // adicionei essa propriedade para preencher o select de níveis
+        level: ""
+      }
     };
   },
-  created: function created() {
-    var _this = this;
-    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return _this.loadLevels();
-          case 2:
-          case "end":
-            return _context.stop();
-        }
-      }, _callee);
-    }))();
-  },
   methods: {
-    loadLevels: function loadLevels() {
-      var _this2 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
+    addDeveloper: function addDeveloper() {
+      var _this = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
             case 0:
-              _context2.next = 2;
-              return _this2.axios.get("/api/level").then(function (response) {
-                _this2.levels = response.data;
-              })["catch"](function (error) {
-                console.log(error);
+              _context.prev = 0;
+              _context.next = 3;
+              return _this.axios.post("/api/developer", _this.developer);
+            case 3:
+              response = _context.sent;
+              _this.$router.push({
+                name: "developer"
               });
-            case 2:
+              _context.next = 10;
+              break;
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              console.log(_context.t0);
+            case 10:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
-        }, _callee2);
-      }))();
-    },
-    create: function create() {
-      var _this3 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
-            case 0:
-              _context3.next = 2;
-              return _this3.axios.post("/api/developer", _this3.developer).then(function (response) {
-                _this3.$router.push({
-                  name: "showDeveloper"
-                });
-              })["catch"](function (error) {
-                console.log(error);
-              });
-            case 2:
-            case "end":
-              return _context3.stop();
-          }
-        }, _callee3);
+        }, _callee, null, [[0, 7]]);
       }))();
     }
   }
@@ -103,28 +75,18 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-12"
-  }, [_c("div", {
-    staticClass: "card"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
-  }, [_c("form", {
+  return _c("div", [_c("h3", {
+    staticClass: "mb-3"
+  }, [_vm._v("Adicionar Desenvolvedor")]), _vm._v(" "), _c("form", {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.create.apply(null, arguments);
+        return _vm.addDeveloper.apply(null, arguments);
       }
     }
   }, [_c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-12 mb-2"
-  }, [_c("div", {
     staticClass: "form-group"
-  }, [_c("label", [_vm._v("Nome")]), _vm._v(" "), _c("input", {
+  }, [_c("label", [_vm._v("Nome:")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -133,7 +95,8 @@ var render = function render() {
     }],
     staticClass: "form-control",
     attrs: {
-      type: "text"
+      type: "text",
+      required: ""
     },
     domProps: {
       value: _vm.developer.name
@@ -144,11 +107,9 @@ var render = function render() {
         _vm.$set(_vm.developer, "name", $event.target.value);
       }
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 mb-2"
-  }, [_c("div", {
+  })]), _vm._v(" "), _c("div", {
     staticClass: "form-group"
-  }, [_c("label", [_vm._v("Email")]), _vm._v(" "), _c("input", {
+  }, [_c("label", [_vm._v("Email:")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -157,7 +118,8 @@ var render = function render() {
     }],
     staticClass: "form-control",
     attrs: {
-      type: "email"
+      type: "email",
+      required: ""
     },
     domProps: {
       value: _vm.developer.email
@@ -168,11 +130,9 @@ var render = function render() {
         _vm.$set(_vm.developer, "email", $event.target.value);
       }
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 mb-2"
-  }, [_c("div", {
+  })]), _vm._v(" "), _c("div", {
     staticClass: "form-group"
-  }, [_c("label", [_vm._v("Data de Nascimento")]), _vm._v(" "), _c("input", {
+  }, [_c("label", [_vm._v("Data de Nascimento:")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -181,7 +141,8 @@ var render = function render() {
     }],
     staticClass: "form-control",
     attrs: {
-      type: "date"
+      type: "date",
+      required: ""
     },
     domProps: {
       value: _vm.developer.birthdate
@@ -192,18 +153,19 @@ var render = function render() {
         _vm.$set(_vm.developer, "birthdate", $event.target.value);
       }
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 mb-2"
-  }, [_c("div", {
+  })]), _vm._v(" "), _c("div", {
     staticClass: "form-group"
-  }, [_c("label", [_vm._v("Nível")]), _vm._v(" "), _c("select", {
+  }, [_c("label", [_vm._v("Nível:")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.developer.level_id,
-      expression: "developer.level_id"
+      value: _vm.developer.level,
+      expression: "developer.level"
     }],
     staticClass: "form-control",
+    attrs: {
+      required: ""
+    },
     on: {
       change: function change($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
@@ -212,42 +174,33 @@ var render = function render() {
           var val = "_value" in o ? o._value : o.value;
           return val;
         });
-        _vm.$set(_vm.developer, "level_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        _vm.$set(_vm.developer, "level", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
   }, [_c("option", {
     attrs: {
-      value: "",
-      disabled: "",
-      selected: ""
+      value: ""
     }
-  }, [_vm._v("Selecione o nível")]), _vm._v(" "), _vm._l(_vm.levels, function (level) {
-    return _c("option", {
-      key: level._id,
-      domProps: {
-        value: level._id
-      }
-    }, [_vm._v(_vm._s(level.name))]);
-  })], 2)])]), _vm._v(" "), _vm._m(1)])])])])])]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "card-header"
-  }, [_c("h4", [_vm._v("Criar Developer")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-12"
-  }, [_c("button", {
+  }, [_vm._v("Selecione o nível")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Junior"
+    }
+  }, [_vm._v("Junior")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Pleno"
+    }
+  }, [_vm._v("Pleno")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Senior"
+    }
+  }, [_vm._v("Senior")])])]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Salvar")])]);
-}];
+  }, [_vm._v("Adicionar")])])]);
+};
+var staticRenderFns = [];
 render._withStripped = true;
 
 

@@ -16,14 +16,14 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "developers",
+  name: "developer",
   data: function data() {
     return {
-      developers: []
+      developer: []
     };
   },
   mounted: function mounted() {
-    this.showDevelopers;
+    this.showDevelopers();
   },
   methods: {
     showDevelopers: function showDevelopers() {
@@ -34,9 +34,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.next = 2;
               return _this.axios.get('/api/developer').then(function (response) {
-                _this.developers = response.data;
+                _this.developer = response.data;
               })["catch"](function (error) {
-                _this.blog = [];
+                _this.developer = [];
               });
             case 2:
             case "end":
@@ -96,7 +96,7 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.developers, function (developer) {
     return _c("tr", {
       key: developer.id
-    }, [_c("td", [_vm._v(_vm._s(developer.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(developer.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(developer.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(developer.birthdate))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(developer.level_id))]), _vm._v(" "), _c("td", [_c("router-link", {
+    }, [_c("td", [_vm._v(_vm._s(developer.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(developer.name))]), _vm._v(" "), _c("td", [_c("router-link", {
       staticClass: "btn btn-info",
       attrs: {
         to: {
