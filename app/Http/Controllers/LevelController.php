@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Level;
 use Illuminate\Http\Request;
 
 class LevelController extends Controller
@@ -11,7 +12,8 @@ class LevelController extends Controller
      */
     public function index()
     {
-        //
+        $levels = Level::all();
+        return response()->json($levels);
     }
 
     /**
@@ -27,21 +29,25 @@ class LevelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $level = Level::create($request->all());
+        return response()->json([
+            'level' => $level,
+            'message' => 'Nivel criado com sucesso'
+        ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Level $level)
     {
-        //
+        return response()->json($level);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Level $level)
     {
         //
     }
@@ -49,16 +55,23 @@ class LevelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Level $level)
     {
-        //
+        $level->update($request->all());
+        return response()->json([
+            'level' => $level,
+            'message' => 'Nivel atualizado com sucesso'
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Level $level)
     {
-        //
+        $level->delete();
+        return response()->json([
+            'message' => 'Nivel removido com sucesso'
+        ]);
     }
 }

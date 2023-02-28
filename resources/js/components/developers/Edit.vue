@@ -11,6 +11,14 @@
                             <label>Nome</label>
                             <input type="text" class="form-control" v-model="developer.name">
                         </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" v-model="developer.email">
+                        </div>
+                        <div class="form-group">
+                            <label>Nivel</label>
+                            <input type="text" class="form-control" v-model="developer.level_id">
+                        </div>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Atualizar</button>

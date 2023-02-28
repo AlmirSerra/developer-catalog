@@ -2118,7 +2118,7 @@ var render = function render() {
     attrs: {
       to: "/levels"
     }
-  }, [_vm._v("Levels")])], 1)]), _vm._v(" "), _vm._m(2)])])]), _vm._v(" "), _c("router-view")], 1);
+  }, [_vm._v("Levels")])], 1)])])])]), _vm._v(" "), _c("router-view")], 1);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -2152,24 +2152,6 @@ var staticRenderFns = [function () {
   }, [_c("span", {
     staticClass: "navbar-toggler-icon"
   })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("form", {
-    staticClass: "d-flex"
-  }, [_c("input", {
-    staticClass: "form-control me-2",
-    attrs: {
-      type: "search",
-      placeholder: "Search",
-      "aria-label": "Search"
-    }
-  }), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-outline-success",
-    attrs: {
-      type: "submit"
-    }
-  }, [_vm._v("Search")])]);
 }];
 render._withStripped = true;
 
@@ -2283,6 +2265,15 @@ var Create = function Create() {
 var Edit = function Edit() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_developers_Edit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/developers/Edit.vue */ "./resources/js/components/developers/Edit.vue"));
 };
+var ShowLevel = function ShowLevel() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_levels_ShowLevel_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/levels/ShowLevel.vue */ "./resources/js/components/levels/ShowLevel.vue"));
+};
+var CreateLevel = function CreateLevel() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_levels_CreateLevel_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/levels/CreateLevel.vue */ "./resources/js/components/levels/CreateLevel.vue"));
+};
+var EditLevel = function EditLevel() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_levels_EditLevel_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/levels/EditLevel.vue */ "./resources/js/components/levels/EditLevel.vue"));
+};
 var routes = [{
   name: 'home',
   path: '/',
@@ -2299,6 +2290,18 @@ var routes = [{
   name: 'editDevelopers',
   path: '/edit/:id',
   component: Edit
+}, {
+  name: 'showLevel',
+  path: '/levels',
+  component: ShowLevel
+}, {
+  name: 'createLevel',
+  path: '/levels/create',
+  component: CreateLevel
+}, {
+  name: 'editLevel',
+  path: '/levels/edit/:id',
+  component: EditLevel
 }];
 
 /***/ }),
@@ -2309,7 +2312,7 @@ var routes = [{
   \*******************************/
 /***/ (() => {
 
-throw new Error("Module build failed (from ./node_modules/laravel-mix/node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js):\nTypeError: Cannot read properties of undefined (reading 'config')\n    at getTailwindConfig (C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\tailwindcss\\lib\\lib\\setupTrackingContext.js:85:63)\n    at C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\tailwindcss\\lib\\lib\\setupTrackingContext.js:97:92\n    at C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\tailwindcss\\lib\\processTailwindFeatures.js:46:11\n    at plugins (C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\tailwindcss\\lib\\plugin.js:38:63)\n    at LazyResult.runOnRoot (C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\postcss\\lib\\lazy-result.js:339:16)\n    at LazyResult.runAsync (C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\postcss\\lib\\lazy-result.js:393:26)\n    at LazyResult.async (C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\postcss\\lib\\lazy-result.js:221:30)\n    at LazyResult.then (C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\postcss\\lib\\lazy-result.js:206:17)\n    at processResult (C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\webpack\\lib\\NormalModule.js:758:19)\n    at C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\webpack\\lib\\NormalModule.js:860:5\n    at C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\loader-runner\\lib\\LoaderRunner.js:400:11\n    at C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\loader-runner\\lib\\LoaderRunner.js:252:18\n    at context.callback (C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (C:\\Users\\Almir Serra\\developer-catalog2\\node_modules\\laravel-mix\\node_modules\\postcss-loader\\dist\\index.js:142:7)");
+throw new Error("Module build failed (from ./node_modules/laravel-mix/node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/laravel-mix/node_modules/postcss-loader/dist/cjs.js):\nTypeError: Cannot read properties of undefined (reading 'config')\n    at getTailwindConfig (C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\tailwindcss\\lib\\lib\\setupTrackingContext.js:85:63)\n    at C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\tailwindcss\\lib\\lib\\setupTrackingContext.js:97:92\n    at C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\tailwindcss\\lib\\processTailwindFeatures.js:46:11\n    at plugins (C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\tailwindcss\\lib\\plugin.js:38:63)\n    at LazyResult.runOnRoot (C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\postcss\\lib\\lazy-result.js:339:16)\n    at LazyResult.runAsync (C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\postcss\\lib\\lazy-result.js:393:26)\n    at LazyResult.async (C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\postcss\\lib\\lazy-result.js:221:30)\n    at LazyResult.then (C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\postcss\\lib\\lazy-result.js:206:17)\n    at processResult (C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\webpack\\lib\\NormalModule.js:758:19)\n    at C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\webpack\\lib\\NormalModule.js:860:5\n    at C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\loader-runner\\lib\\LoaderRunner.js:400:11\n    at C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\loader-runner\\lib\\LoaderRunner.js:252:18\n    at context.callback (C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (C:\\Users\\Almir Serra\\developer-catalog\\node_modules\\laravel-mix\\node_modules\\postcss-loader\\dist\\index.js:142:7)");
 
 /***/ }),
 
@@ -17917,7 +17920,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_developers_Show_vue":1,"resources_js_components_developers_Create_vue":1,"resources_js_components_developers_Edit_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_developers_Show_vue":1,"resources_js_components_developers_Create_vue":1,"resources_js_components_developers_Edit_vue":1,"resources_js_components_levels_ShowLevel_vue":1,"resources_js_components_levels_CreateLevel_vue":1,"resources_js_components_levels_EditLevel_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
