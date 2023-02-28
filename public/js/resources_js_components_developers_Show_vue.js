@@ -16,10 +16,10 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "developer",
+  name: "developers",
   data: function data() {
     return {
-      developer: []
+      developers: []
     };
   },
   mounted: function mounted() {
@@ -34,9 +34,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.next = 2;
               return _this.axios.get('/api/developer').then(function (response) {
-                _this.developer = response.data;
+                _this.developers = response.data;
               })["catch"](function (error) {
-                _this.developer = [];
+                _this.developers = [];
               });
             case 2:
             case "end":
@@ -51,7 +51,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.axios["delete"]("api/developer/".concat(id)).then(function (response) {
           _this2.showDevelopers();
         })["catch"](function (error) {
-          console;
+          console.log(error);
         });
       }
     }
@@ -92,11 +92,11 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "table-responsive"
   }, [_c("table", {
-    staticClass: "bg-primary text-white"
+    staticClass: "table table-bordered"
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.developers, function (developer) {
     return _c("tr", {
       key: developer.id
-    }, [_c("td", [_vm._v(_vm._s(developer.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(developer.name))]), _vm._v(" "), _c("td", [_c("router-link", {
+    }, [_c("td", [_vm._v(_vm._s(developer.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(developer.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(developer.email))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(developer.level))]), _vm._v(" "), _c("td", [_c("router-link", {
       staticClass: "btn btn-info",
       attrs: {
         to: {
@@ -107,7 +107,7 @@ var render = function render() {
         }
       }
     }, [_c("i", {
-      staticClass: "fa-light fa-pen-to-square"
+      staticClass: "fa fa-pen-to-square"
     })]), _vm._v(" "), _c("a", {
       staticClass: "btn btn-danger",
       attrs: {
@@ -119,14 +119,16 @@ var render = function render() {
         }
       }
     }, [_c("i", {
-      staticClass: "fa-light fa-trash"
+      staticClass: "fa fa-trash"
     })])], 1)]);
   }), 0)])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Email")]), _vm._v(" "), _c("th", [_vm._v("Data de Nascimento")]), _vm._v(" "), _c("th", [_vm._v("Nível")])])]);
+  return _c("thead", {
+    staticClass: "bg-primary text-white"
+  }, [_c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v("Nome")]), _vm._v(" "), _c("th", [_vm._v("Email")]), _vm._v(" "), _c("th", [_vm._v("Nível")]), _vm._v(" "), _c("th", [_vm._v("Ações")])])]);
 }];
 render._withStripped = true;
 

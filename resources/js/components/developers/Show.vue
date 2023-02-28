@@ -5,24 +5,26 @@
         </div>
         <div class="col-12">
             <div class="table-responsive">
-                <table class="bg-primary text-white">
-                    <thead>
+                <table class="table table-bordered">
+                    <thead class="bg-primary text-white">
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Data de Nascimento</th>
                             <th>Nível</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="developer in developers" :key="developer.id">
                         <td>{{ developer.id }}</td>
                         <td>{{ developer.name }}</td>
+                        <td>{{ developer.email }}</td>
+                        <td>{{ developer.level }}</td>
 
                         <td>
-                            <router-link :to='{name:"editDevelopers", params:{id:developer.id}}' class="btn btn-info"><i class="fa-light fa-pen-to-square"></i></router-link>
-                            <a type="button" @click="deleteDeveloper(developer.id)" class="btn btn-danger"><i class="fa-light fa-trash"></i></a>
+                            <router-link :to='{name:"editDevelopers", params:{id:developer.id}}' class="btn btn-info"><i class="fa fa-pen-to-square"></i></router-link>
+                            <a type="button" @click="deleteDeveloper(developer.id)" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     </tbody>
@@ -35,10 +37,10 @@
 <script>
 
 export default {
-    name:"developer",
+    name:"developers",
     data(){
         return {
-            developer: []
+            developers: []
         }
     },
     mounted(){
@@ -48,10 +50,10 @@ export default {
         async showDevelopers(){
             await this.axios.get('/api/developer')
                 .then(response=>{
-                    this.developer = response.data
+                    this.developers = response.data
                 })
                 .catch(error=>{
-                    this.developer = []
+                    this.developers = []
                 })
         },
         deleteDeveloper(id){
@@ -61,7 +63,7 @@ export default {
                     this.showDevelopers()
                 })
                 .catch(error=>{
-                    console
+                    console.log(error)
                 })
             }
         }

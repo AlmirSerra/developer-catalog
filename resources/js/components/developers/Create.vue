@@ -11,10 +11,6 @@
           <input type="email" class="form-control" v-model="developer.email" required>
         </div>
         <div class="form-group">
-          <label>Data de Nascimento:</label>
-          <input type="date" class="form-control" v-model="developer.birthdate" required>
-        </div>
-        <div class="form-group">
           <label>Nível:</label>
           <select class="form-control" v-model="developer.level" required>
             <option value="">Selecione o nível</option>
@@ -30,13 +26,12 @@
   
   <script>
   export default {
-    name: "Create",
+    name: "createDevelopers",
     data() {
       return {
         developer: {
           name: "",
           email: "",
-          birthdate: "",
           level: "",
         },
       };
